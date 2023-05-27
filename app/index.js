@@ -1,5 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native';
-import SignIn from './screens/sign-in';
+import { View } from 'react-native';
+import SignIn from '@/screens/SignIn';
+
+import styles from './styles';
 
 export default function App() {
   return (
@@ -8,13 +10,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'scroll'
-  },
-});
