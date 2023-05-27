@@ -67,6 +67,7 @@ module.exports = {
         alias: {
           app: './app',
           '@/screens': './app/screens',
+          '@/constants': './app/constants',
         },
       },
     },

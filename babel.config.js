@@ -2,14 +2,20 @@ module.exports = function (api) {
   api.cache(true);
   return {
     presets: ['babel-preset-expo'],
+    env: {
+      production: {
+        plugins: ['react-native-paper/babel'],
+      },
+    },
     plugins: [
-      require.resolve('expo-router/babel'),
+      'expo-router/babel',
       [
-        require.resolve('babel-plugin-module-resolver'),
+        'babel-plugin-module-resolver',
         {
           alias: {
             app: './app',
             '@/screens': './app/screens',
+            '@/constants': './app/constants',
           },
         },
       ],
