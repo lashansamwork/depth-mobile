@@ -1,9 +1,19 @@
 import { StyleSheet } from 'react-native';
 
+const logoTextColor = '#1B1B1B';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    alignItems: 'center',
+    marginTop: '33%',
+  },
+  logoText: {
+    fontFamily: 'Inter-Black',
+    fontSize: 50,
+    color: logoTextColor,
   },
 });

@@ -33,9 +33,8 @@ export default function App() {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <Splash>
-        <SignIn />
-      </Splash>
+      <Splash />
+      <SignIn />
     </View>
   );
 }
