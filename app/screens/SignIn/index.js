@@ -7,7 +7,7 @@ import styles from './styles';
 export default function SignIn() {
   return (
     <View style={styles.container}>
-      <Text>Sign In Again Again AGAIN</Text>
+      <Text style={{ fontFamily: 'Inter-Black' }}>Sign In Again Again AGAIN</Text>
       <StatusBar style="auto" />
     </View>
   );

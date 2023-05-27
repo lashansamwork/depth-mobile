@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const BGColor = '#4D4A95';
+export const BGColor = '#4D4A95';
 
 export default StyleSheet.create({
   container: {
