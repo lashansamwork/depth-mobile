@@ -16,7 +16,7 @@ export default StyleSheet.create({
     color: THEME.offBlack,
   },
   input: {
-    backgroundColor: THEME.white,
+    backgroundColor: THEME.transparentWhite,
     marginTop: 20,
   },
   inputOutline: {
@@ -27,5 +27,9 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
+  },
+  inputActive: {
+    backgroundColor: THEME.white,
+    marginTop: 20,
   },
 });

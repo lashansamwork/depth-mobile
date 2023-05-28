@@ -4,14 +4,48 @@ import { Dimensions, Image, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 
 import { THEME } from '@/constants/theme';
+import { supabase } from '@/client/supabase';
 import sailboat from '../../../assets/sailboat.png';
 import styles from './styles';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [loading, setLoading] = useState(false);
   const { width } = Dimensions.get('window');
+  const [emailFocused, setEmailFocus] = useState(false);
+  const [passwordFocused, setPasswordFocus] = useState(false);
+
+  async function signInWithEmail() {
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    // if (error) setBanner('There was an error with Sign In.');
+
+    setLoading(false);
+  }
+
+  async function signUpWithEmail() {
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    // if (error) setBanner('There was an error with Registration.');
+    setLoading(false);
+  }
+
+  const handleEmailFocus = () => {
+    setEmailFocus(true);
+  };
+
+  const handlePasswordFocus = () => {
+    setPasswordFocus(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -29,19 +63,21 @@ export default function SignIn() {
           label="Email"
           mode="outlined"
           onChangeText={(value) => setEmail(value)}
+          onFocus={handleEmailFocus}
           outlineStyle={styles.inputOutline}
           right={<TextInput.Icon icon="email" />}
-          style={styles.input}
+          style={emailFocused ? styles.inputActive : styles.input}
           value={email}
         />
         <TextInput
           label="Password"
           mode="outlined"
           onChangeText={(value) => setPassword(value)}
+          onFocus={handlePasswordFocus}
           outlineStyle={styles.inputOutline}
           right={<TextInput.Icon icon="eye" />}
           secureTextEntry={true}
-          style={styles.input}
+          style={passwordFocused ? styles.inputActive : styles.input}
           value={password}
         />
       </View>

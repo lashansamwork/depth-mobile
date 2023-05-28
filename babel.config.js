@@ -16,6 +16,8 @@ module.exports = function (api) {
             app: './app',
             '@/screens': './app/screens',
             '@/constants': './app/constants',
+            '@/client': './app/client',
+            '@/components': './app/components',
           },
         },
       ],

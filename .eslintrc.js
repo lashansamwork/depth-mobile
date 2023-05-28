@@ -68,6 +68,8 @@ module.exports = {
           app: './app',
           '@/screens': './app/screens',
           '@/constants': './app/constants',
+          '@/client': './app/client',
+          '@/components': './app/components',
         },
       },
     },

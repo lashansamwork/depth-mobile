@@ -4,8 +4,9 @@ import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 
-import Splash from '@/screens/Splash';
+import Waves from '@/screens/Waves';
 import SignIn from '@/screens/SignIn';
+import FadeInView from '@/components/FadeInView';
 import styles from './styles';
 
 // Keep the splash screen visible while we fetch resources
@@ -33,8 +34,10 @@ export default function App() {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <Splash />
-      <SignIn />
+      <Waves />
+      <FadeInView style={{ flex: 1 }}>
+        <SignIn />
+      </FadeInView>
     </View>
   );
 }

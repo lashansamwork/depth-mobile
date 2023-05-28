@@ -8,9 +8,9 @@ export default () => ({
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     splash: {
-      image: './assets/splash.png',
-      resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      image: './assets/waves.gif',
+      resizeMode: 'cover',
+      backgroundColor: '#daefff',
     },
     assetBundlePatterns: ['**/*'],
     ios: {
@@ -19,7 +19,7 @@ export default () => ({
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#daefff',
       },
     },
     web: {

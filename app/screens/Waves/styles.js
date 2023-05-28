@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-export const BGColor = '#4D4A95';
+import { THEME } from '@/constants/theme';
 
 export default StyleSheet.create({
   container: {
@@ -9,7 +8,7 @@ export default StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: BGColor,
+    backgroundColor: THEME.bg,
   },
   image: {
     width: null,
