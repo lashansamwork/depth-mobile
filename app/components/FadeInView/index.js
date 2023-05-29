@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { Animated } from 'react-native';
 
-export default function FadeInView({ style, children }) {
+import globalStyles from '@/constants/styles';
+
+export default function FadeInView({ children }) {
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function FadeInView({ style, children }) {
   return (
     <Animated.View // Special animatable View
       style={{
-        ...style,
+        ...globalStyles.absolute,
         opacity: fadeAnim, // Bind opacity to animated value
       }}
     >
