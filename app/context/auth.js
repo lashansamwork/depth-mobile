@@ -14,7 +14,7 @@ function useProtectedRoute(user) {
   const router = useRouter();
 
   React.useEffect(() => {
-    const inAuthGroup = segments[0] === '(auth)';
+    const inAuthGroup = segments[1] !== 'Auth';
     initApp(user).then(() => {
       if (
         // If the user is not signed in and the initial segment is not anything in the auth group.
@@ -22,12 +22,12 @@ function useProtectedRoute(user) {
         !inAuthGroup
       ) {
         // Redirect to the sign-in page.
-        if (segments.length == 0 || segments[1] !== 'Guest') {
+        if (segments.length == 0 || !inAuthGroup) {
           router.replace('/screens/Guest');
         }
       } else if (user && inAuthGroup) {
         // Redirect away from the sign-in page.
-        router.replace('/screens/Home');
+        router.replace('/screens/Auth');
       }
     });
   }, [user, segments]);
