@@ -1,6 +1,6 @@
 import React from 'react';
-import { Slot } from 'expo-router';
 import * as Font from 'expo-font';
+import { Slot } from 'expo-router';
 import Toast from 'react-native-toast-message';
 import { AuthProvider } from '@/context/auth';
 

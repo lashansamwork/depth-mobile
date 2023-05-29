@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import Waves from '@/components/Waves';
+import { View } from 'react-native';
+
 import { supabase } from '@/client/supabase';
+import FadeInView from '@/components/FadeInView';
+import Waves from '@/components/Waves';
 import { useAuth } from '@/context/auth';
 import SignIn from '@/screens/Guest/SignIn';
-import FadeInView from '@/components/FadeInView';
 import styles from './styles';
 
 // Keep the splash screen visible while we fetch resources

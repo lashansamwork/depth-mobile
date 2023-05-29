@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { useRouter } from 'expo-router';
 import { Dimensions, View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 
-import { useRouter } from 'expo-router';
-import { THEME } from '@/constants/theme';
 import { supabase } from '@/client/supabase';
+import { THEME } from '@/constants/theme';
 import { useAuth } from '@/context/auth';
-import { validateEmail, validatePassword } from '@/utils/validation';
 import { MSG_VALIDATION } from '@/messages/validation';
+import { validateEmail, validatePassword } from '@/utils/validation';
 import SignLayout from '../Layout';
 import styles from '../SignIn/styles';
 
@@ -25,8 +25,12 @@ export default function SignUp() {
 
   async function signUpWithEmail() {
     setLoading(true);
-    if (!validateEmail(email)) return setErrorText(MSG_VALIDATION.EMAIL);
-    if (!validatePassword(password)) return setErrorText(MSG_VALIDATION.PASSWORD);
+    if (!validateEmail(email)) {
+      return setErrorText(MSG_VALIDATION.EMAIL);
+    }
+    if (!validatePassword(password)) {
+      return setErrorText(MSG_VALIDATION.PASSWORD);
+    }
 
     const { data, error } = await supabase.auth.signUp({
       email,

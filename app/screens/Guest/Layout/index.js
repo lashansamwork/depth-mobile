@@ -1,12 +1,11 @@
 import React from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
+import { Dimensions, Image, Text, View } from 'react-native';
 import { HelperText } from 'react-native-paper';
-import Waves from '@/components/Waves';
-import sailboat from '@/assets/sailboat.png';
 
+import sailboat from '@/assets/sailboat.png';
 import FadeInView from '@/components/FadeInView';
+import Waves from '@/components/Waves';
 import styles from './styles';
 
 export default function SignLayout({ children, errorText }) {

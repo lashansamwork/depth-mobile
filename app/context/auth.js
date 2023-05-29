@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import Toast from 'react-native-toast-message';
-import { ROUTES } from '@/constants/routes';
 import { supabase } from '@/client/supabase';
+import { ROUTES } from '@/constants/routes';
 
 const AuthContext = createContext(null);
 // This hook can be used to access the user info.
@@ -52,11 +52,12 @@ export function AuthProvider({ children }) {
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
 
-    if (error)
+    if (error) {
       Toast.show({
         type: 'error',
         text1: 'Error signing out.',
       });
+    }
 
     setAuth(null);
   };

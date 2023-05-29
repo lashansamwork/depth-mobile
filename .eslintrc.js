@@ -4,24 +4,26 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ['import', 'unused-imports'],
+  plugins: ['import', 'unused-imports', 'autofix'],
   extends: [
     '@react-native-community',
-    'prettier',
     'eslint:recommended',
     'plugin:import/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
+    // "prettier"
   ],
   rules: {
-    // prettier
-    'prettier/prettier': [2],
+    'autofix/no-debugger': 'error',
     // unused-imports
     'no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 2,
     'unused-imports/no-unused-vars': [
       1,
-      { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
     ],
     // import
     'import/no-unresolved': [1, { commonjs: true, amd: true }],
@@ -34,9 +36,18 @@ module.exports = {
       'error',
       {
         alphabetize: {
-          order: 'ignore',
+          order: 'asc',
         },
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
         pathGroups: [
           {
             pattern: '@/**',
@@ -52,12 +63,23 @@ module.exports = {
         pathGroupsExcludedImportTypes: ['react'],
       },
     ],
+    // 'sort-imports': [
+    //   'error',
+    //   {
+    //     ignoreCase: false,
+    //     ignoreDeclarationSort: false,
+    //     ignoreMemberSort: false,
+    //     memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+    //     allowSeparatedGroups: false,
+    //   },
+    // ],
     'import/newline-after-import': ['error', { count: 1 }],
     // react-native
     'react-native/no-inline-styles': 0,
     // react
     'react-hooks/exhaustive-deps': 0,
     'no-shadow': 1,
+    'prettier/prettier': 0,
   },
   settings: {
     // import

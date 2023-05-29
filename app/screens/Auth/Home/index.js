@@ -1,12 +1,13 @@
 import React from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Dimensions, Image, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
-import { THEME } from '@/constants/theme';
-import { useAuth } from '@/context/auth';
+
 import sailboat from '@/assets/sailboat.png';
 import Waves from '@/components/Waves';
+import { THEME } from '@/constants/theme';
+import { useAuth } from '@/context/auth';
 import styles from './styles';
 
 export default function Home() {
@@ -35,7 +36,12 @@ export default function Home() {
         }}
       >
         <Text>Home screen</Text>
-        <Button buttonColor={THEME.primary} icon="account" mode="contained" onPress={showToast}>
+        <Button
+          buttonColor={THEME.primary}
+          icon="account"
+          mode="contained"
+          onPress={showToast}
+        >
           Show toast
         </Button>
         <View style={{ padding: 10 }} />
