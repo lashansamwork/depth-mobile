@@ -66,10 +66,14 @@ module.exports = {
       'babel-module': {
         alias: {
           app: './app',
-          '@/screens': './app/screens',
-          '@/constants': './app/constants',
+          '@/assets': './assets',
           '@/client': './app/client',
           '@/components': './app/components',
+          '@/constants': './app/constants',
+          '@/context': './app/context',
+          '@/messages': './app/messages',
+          '@/screens': './app/screens',
+          '@/utils': './app/utils',
         },
       },
     },

@@ -6,6 +6,6 @@ export const unstable_settings = {
   initialRouteName: 'SignIn',
 };
 
-export default function GuestLayout() {
+export default function GuestStack() {
   return <Stack screenOptions={{ headerShown: false }} />;
 }

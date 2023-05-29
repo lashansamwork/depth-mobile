@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import Waves from '@/screens/Waves';
+import Waves from '@/components/Waves';
 import { supabase } from '@/client/supabase';
+import { useAuth } from '@/context/auth';
+import SignIn from '@/screens/Guest/SignIn';
+import FadeInView from '@/components/FadeInView';
 import styles from './styles';
+
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
-import { useAuth } from './context/auth';
 
 export default function App() {
   const { signIn } = useAuth();
@@ -23,6 +26,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Waves />
+      <FadeInView>
+        <SignIn />
+      </FadeInView>
     </View>
   );
 }

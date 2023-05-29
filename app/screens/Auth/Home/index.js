@@ -4,8 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
 import { THEME } from '@/constants/theme';
-import { useAuth } from '../../../context/auth';
-import sailboat from '../../../../assets/sailboat.png';
+import { useAuth } from '@/context/auth';
+import sailboat from '@/assets/sailboat.png';
+import Waves from '@/components/Waves';
 import styles from './styles';
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <Waves />
       <View style={styles.logo}>
         <Image source={sailboat} />
         <Text style={styles.logoText}>depth</Text>

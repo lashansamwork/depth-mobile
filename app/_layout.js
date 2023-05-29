@@ -2,7 +2,7 @@ import React from 'react';
 import { Slot } from 'expo-router';
 import * as Font from 'expo-font';
 import Toast from 'react-native-toast-message';
-import { AuthProvider } from './context/auth';
+import { AuthProvider } from '@/context/auth';
 
 export default function Root() {
   const [fontsLoaded] = Font.useFonts({
