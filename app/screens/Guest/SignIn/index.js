@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, Image, Text, View } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput, Button, HelperText } from 'react-native-paper';
 
+import { useRouter } from 'expo-router';
 import { THEME } from '@/constants/theme';
 import { supabase } from '@/client/supabase';
-import sailboat from '../../../assets/sailboat.png';
+import sailboat from '../../../../assets/sailboat.png';
+import { useAuth } from '../../../context/auth';
 import styles from './styles';
 
 export default function SignIn() {
@@ -15,29 +17,44 @@ export default function SignIn() {
   const { width } = Dimensions.get('window');
   const [emailFocused, setEmailFocus] = useState(false);
   const [passwordFocused, setPasswordFocus] = useState(false);
+  const { signIn } = useAuth();
+  const router = useRouter();
+  const [errorText, setErrorText] = useState('');
 
   async function signInWithEmail() {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    let errorMessage = '';
+    if (!validateEmail(email)) {
+      errorMessage = 'Enter a valid email';
+    }
 
-    // if (error) setBanner('There was an error with Sign In.');
+    if (password.length === 0) {
+      errorMessage += '\nPassword cannot be empty';
+    }
 
+    if (errorMessage) {
+      setErrorText(errorMessage);
+    } else {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        setErrorText(error.message);
+      } else {
+        signIn(data);
+      }
+    }
     setLoading(false);
   }
 
-  async function signUpWithEmail() {
-    setLoading(true);
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    // if (error) setBanner('There was an error with Registration.');
-    setLoading(false);
-  }
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleEmailFocus = () => {
     setEmailFocus(true);
@@ -59,6 +76,9 @@ export default function SignIn() {
           width: width * 0.8,
         }}
       >
+        <HelperText type="error" visible={errorText}>
+          {errorText}
+        </HelperText>
         <TextInput
           label="Email"
           mode="outlined"
@@ -68,6 +88,8 @@ export default function SignIn() {
           right={<TextInput.Icon icon="email" />}
           style={emailFocused ? styles.inputActive : styles.input}
           value={email}
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
         <TextInput
           label="Password"
@@ -79,6 +101,7 @@ export default function SignIn() {
           secureTextEntry={true}
           style={passwordFocused ? styles.inputActive : styles.input}
           value={password}
+          autoCapitalize="none"
         />
       </View>
       <View style={{ ...styles.buttonWrapper, width: width * 0.8 }}>
@@ -87,7 +110,7 @@ export default function SignIn() {
           icon="account-plus"
           mode="contained"
           buttonColor={THEME.secondary}
-          onPress={() => console.log('Pressed')}
+          onPress={() => router.replace('screens/Guest/SignUp')}
           textColor={THEME.offBlack}
         >
           Register
@@ -96,7 +119,7 @@ export default function SignIn() {
           buttonColor={THEME.primary}
           icon="account"
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={() => signInWithEmail()}
         >
           Sign In
         </Button>
