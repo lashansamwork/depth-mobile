@@ -5,13 +5,15 @@ import { Dimensions, Image, Text, View } from 'react-native';
 import sailboat from '@/assets/sailboat.png';
 import FadeInView from '@/components/FadeInView';
 import Waves from '@/components/Waves';
+
+import globalStyles from '@/constants/styles';
 import styles from './styles';
 
 export default function SignLayout({ children }) {
   const { width } = Dimensions.get('window');
 
   return (
-    <FadeInView>
+    <FadeInView styles={globalStyles.absolute}>
       <View style={styles.container}>
         <Waves />
         <View style={styles.logo}>

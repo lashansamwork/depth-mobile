@@ -1,9 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, Image, Text, View } from 'react-native';
-import { IconButton } from 'react-native-paper';
+import { Button, IconButton } from 'react-native-paper';
 
 import sailboat from '@/assets/sailboat.png';
+import FadeInView from '@/components/FadeInView';
 import FadeOutView from '@/components/FadeOutView';
 import ShrinkInView from '@/components/ShrinkView';
 import Waves from '@/components/Waves';
@@ -46,7 +47,15 @@ export default function Home() {
         style={{
           width: width * 0.8,
         }}
-      />
+      >
+        {Array.from({ length: 50 }, (_, i) => {
+          return (
+            <FadeInView key={i}>
+              <Button>{i}</Button>
+            </FadeInView>
+          );
+        })}
+      </View>
       <StatusBar style="auto" />
     </View>
   );
