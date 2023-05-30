@@ -6,4 +6,5 @@ export const THEME = {
   secondary: '#d4f1f9',
   transparentWhite: 'rgba(255,255,255,0.5)',
   white: '#ffffff',
+  pastelSun: '#f5efb9',
 };
