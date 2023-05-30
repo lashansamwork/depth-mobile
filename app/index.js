@@ -6,7 +6,7 @@ import { supabase } from '@/client/supabase';
 import FadeInView from '@/components/FadeInView';
 import Waves from '@/components/Waves';
 import { useAuth } from '@/context/auth';
-import SignIn from '@/screens/Guest/SignIn';
+import Sign from '@/screens/Guest/Sign';
 import styles from './styles';
 
 // Keep the splash screen visible while we fetch resources
@@ -28,7 +28,7 @@ export default function App() {
     <View style={styles.container}>
       <Waves />
       <FadeInView>
-        <SignIn />
+        <Sign />
       </FadeInView>
     </View>
   );

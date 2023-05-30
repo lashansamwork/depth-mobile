@@ -1,8 +1,9 @@
 export const THEME = {
+  bg: '#daefff',
+  error: '#e24b3b',
+  offBlack: '#1b1b1b',
   primary: '#013b61',
   secondary: '#d4f1f9',
-  offBlack: '#1b1b1b',
-  white: '#ffffff',
   transparentWhite: 'rgba(255,255,255,0.5)',
-  bg: '#daefff',
+  white: '#ffffff',
 };
